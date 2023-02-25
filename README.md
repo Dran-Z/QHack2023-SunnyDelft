@@ -11,3 +11,15 @@ In this project, We aim to:
 -  replicate the result in the paper
 -  demonstrate the algorithm on real devices
 -  develop error-mitigation techniques for it
+
+
+## Progress Tracker
+
+- [ ] Result replication on Simulator
+    - [ ] Coef precision of step function
+    - [ ] Trotterization
+- [ ] Result run on real hardware
+- [ ] Error mitigation technique
+    - [ ] Estimation Circuit
+    - [ ] Extrapolation
+    

@@ -8,9 +8,8 @@ def get_real_CDF(N_sites, t, U, tau, precision, initial_state_symmetry=True):
     fh_matrix = get_sparse_operator(jw_hamiltonian)
     fh_matrix = fh_matrix.todense()
     fh_matrix = fh_matrix.real
-    norm = np.linalg.norm(fh_matrix)
+    #norm = np.linalg.norm(fh_matrix)
     #tau = np.pi/(4*norm)
-    
     Ndim = 2**(2*N_sites)
     energy, eigenstate= np.linalg.eig(tau*fh_matrix)
 
@@ -20,6 +19,8 @@ def get_real_CDF(N_sites, t, U, tau, precision, initial_state_symmetry=True):
     if initial_state_symmetry:
         index_1 = int('0110'*(N_sites//2),2)
         index_2 = int('1001'*(N_sites//2),2)
+        #index_1 = int('1100'*(N_sites//2),2)
+        #index_2 = int('0011'*(N_sites//2),2)
         hf_state[index_1], hf_state[index_2] = 1/np.sqrt(2), 1/np.sqrt(2)
     else:
         hf_index = 0
@@ -48,8 +49,11 @@ def get_real_CDF(N_sites, t, U, tau, precision, initial_state_symmetry=True):
     CDF = np.zeros(len(x_list))
 
     for j,ener_ele in enumerate(ener):
+
+        
         for i,x_ele in enumerate(x_list):
             if x_ele>ener_ele:
+                
                 CDF[i] += prob[j]
 
     return CDF
